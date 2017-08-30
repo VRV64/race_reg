@@ -39,11 +39,48 @@
 
     function main() {
         jQuery(document).ready(function ($) {
-            // We can use jQuery 1.4.2 here
+
+            $(`<style type='text/css'> 
+            #race_reg {
+                padding: 15px;
+                background-color: lightgray;
+                border: 1px solid gray;
+                border-radius: 15px;
+            }
+            #race_reg input{ 
+                width:100%;
+                background-color: #e6cece;
+                border: 1px solid gray;
+            } 
+            #race_reg input:hover, #race_reg input:focus, #race_reg input:not(:placeholder-shown){ 
+                background-color: white;
+            } 
+            #race_reg * {
+                font-family: Verdana;
+            }
+            </style>`).appendTo("head");
+
             var form = $("<form/>",
                 {
                     onsubmit: 'submitForm();return false;'
                 }
+            );
+
+            form.append(
+                $("<label>", { for: 'fio' }).text('ФИО:')
+            );
+            form.append(
+                $("<input>",
+                    {
+                        id: 'fio',
+                        type: 'text',
+                        placeholder: 'ФИО',
+                        name: 'fio'
+                    }
+                )
+                .keyup(function(){
+                    console.log('value changed');
+                })
             );
 
             form.append(
@@ -55,8 +92,7 @@
                         id: 'number',
                         type: 'text',
                         placeholder: 'Бортовой номер',
-                        name: 'number',
-                        style: 'width:100%'
+                        name: 'number'
                     }
                 )
             );
@@ -70,8 +106,7 @@
                         id: 'class',
                         type: 'text',
                         placeholder: 'Класс',
-                        name: 'class',
-                        style: 'width:100%'
+                        name: 'class'
                     }
                 )
             );
@@ -85,8 +120,7 @@
                         id: 'yar',
                         type: 'text',
                         placeholder: 'Год рождения',
-                        name: 'yar',
-                        style: 'width:100%'
+                        name: 'yar'
                     }
                 )
             );
@@ -100,8 +134,7 @@
                         id: 'city',
                         type: 'text',
                         placeholder: 'Город',
-                        name: 'city',
-                        style: 'width:100%'
+                        name: 'city'
                     }
                 )
             );
@@ -115,8 +148,7 @@
                         id: 'phone',
                         type: 'text',
                         placeholder: 'Телефон',
-                        name: 'phone',
-                        style: 'width:100%'
+                        name: 'phone'
                     }
                 )
             );
@@ -130,8 +162,7 @@
                         id: 'insur',
                         type: 'text',
                         placeholder: 'Страховка',
-                        name: 'insur',
-                        style: 'width:100%'
+                        name: 'insur'
                     }
                 )
             );
@@ -145,8 +176,7 @@
                         id: 'insurupto',
                         type: 'text',
                         placeholder: 'Страховка до',
-                        name: 'insurupto',
-                        style: 'width:100%'
+                        name: 'insurupto'
                     }
                 )
             );
@@ -160,8 +190,7 @@
                         id: 'team',
                         type: 'text',
                         placeholder: 'Команда',
-                        name: 'team',
-                        style: 'width:100%'
+                        name: 'team'
                     }
                 )
             );
@@ -175,8 +204,7 @@
                         id: 'userinfo',
                         type: 'text',
                         placeholder: 'Инфо о участнике',
-                        name: 'userinfo',
-                        style: 'width:100%'
+                        name: 'userinfo'
                     }
                 )
             );
@@ -190,8 +218,7 @@
                         id: 'reginfo',
                         type: 'text',
                         placeholder: 'Инфо о регистрации',
-                        name: 'reginfo',
-                        style: 'width:100%'
+                        name: 'reginfo'
                     }
                 )
             );
@@ -205,8 +232,7 @@
                     {
                         id: 'foto',
                         type: 'file',
-                        value: 'Добавить фото',
-                        style: 'width:100%'
+                        value: 'Добавить фото'
                     }
                 )
             );
@@ -215,8 +241,7 @@
                 $("<input>",
                     {
                         type: 'submit',
-                        value: 'Регистрация',
-                        style: 'width:100%'
+                        value: 'Регистрация'
                     }
                 )
             );
@@ -225,7 +250,7 @@
         });
     }
 
-})(); // We call our anonymous function immediately
+})();
 
 
 function submitForm() {
